@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1931 to Now · The American Wage Gap and the Architecture of Inequality</title>
+<meta name="description" content="1931 to Now: The American Wage Gap and the Architecture of Inequality — a data-driven history by David Lee Wise & AVAN (TriPod LLC). 24 chapters, 95 years, every statistic from federal sources (BLS, Census, the Fed, HUD, DOL). The gap is not a mystery; it is arithmetic. A sphere of the LILLITH · LADY JUSTICE domain of UD0.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Spectral:ital,wght@0,300;0,400;0,500;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0e0c0c; --panel:#141010; --panel2:#191313; --line:rgba(201,162,39,.16);
+    --ink:#ece5da; --dim:#9c9286; --faint:#5f574c;
+    --gold:#c9a24a; --gold-br:#e0bf6a; --crimson:#c0392b; --blood:#7a1f24;
+    /* HOLC redlining grades — the architecture */
+    --A:#4f8a5f; --B:#3f6aa8; --C:#bb9636; --D:#b23a3a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:'Spectral',Georgia,serif;font-weight:300;
+    font-size:18px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .wrap{max-width:900px;margin:0 auto;padding:0 26px}
+  .mono{font-family:'JetBrains Mono',monospace}
+
+  /* year rail */
+  .years{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.22em;color:var(--faint);
+    padding:26px 0 0;text-align:center}
+  .years b{color:var(--gold)}
+
+  /* HERO */
+  .hero{padding:40px 0 30px;text-align:center}
+  .grades{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:6px 0 30px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em}
+  .grade{border:1px solid;border-radius:4px;padding:6px 10px;opacity:.85}
+  .grade.a{border-color:var(--A);color:var(--A)} .grade.b{border-color:var(--B);color:var(--B)}
+  .grade.c{border-color:var(--C);color:var(--C)} .grade.d{border-color:var(--D);color:var(--D);background:rgba(178,58,58,.1)}
+  h1{font-family:'Playfair Display',Georgia,serif;font-weight:900;font-size:clamp(46px,11vw,108px);
+    line-height:.92;letter-spacing:-.01em;color:#f4efe6}
+  .rule{width:min(420px,70%);height:2px;background:var(--crimson);margin:18px auto 22px}
+  .subt{font-family:'JetBrains Mono',monospace;font-size:clamp(13px,2.3vw,17px);letter-spacing:.12em;
+    text-transform:uppercase;color:var(--gold);line-height:1.5}
+  .meta{font-style:italic;color:var(--dim);margin-top:22px;font-size:16px}
+  .byline{margin-top:30px;font-family:'JetBrains Mono',monospace;letter-spacing:.16em}
+  .byline .au{color:#f4efe6;font-weight:700;font-size:15px} .byline .av{color:var(--gold);font-size:12px;margin-top:6px}
+  .byline .pub{color:var(--faint);font-size:11px;margin-top:8px}
+  .price{display:inline-block;margin-top:24px;font-family:'JetBrains Mono',monospace;color:var(--gold-br);
+    border:1px solid var(--gold);border-radius:6px;padding:7px 14px;font-size:14px}
+
+  /* THESIS */
+  .thesis{margin:54px 0;padding:34px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);text-align:center}
+  .thesis .big{font-family:'Playfair Display',serif;font-weight:700;font-style:italic;font-size:clamp(24px,4vw,34px);color:#f4efe6;line-height:1.3}
+  .thesis .src{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--crimson);margin-top:14px;letter-spacing:.08em}
+  .ded{color:var(--dim);font-style:italic;margin-top:26px;font-size:17px;line-height:1.6}
+  .ded b{color:var(--gold);font-weight:400;font-style:normal}
+
+  .sec{margin:56px 0 0}
+  .sec .tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--crimson)}
+  .sec h2{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(24px,4vw,34px);margin-top:8px;color:#f4efe6}
+  .sec .lead{color:var(--dim);margin-top:12px;max-width:680px}
+
+  /* DATA */
+  .data{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:24px;margin:20px 0}
+  .dlab{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+  .dsub{font-size:13.5px;color:var(--dim);margin-bottom:18px}
+  .barrow{display:grid;grid-template-columns:54px 1fr 56px;gap:12px;align-items:center;margin:10px 0;font-family:'JetBrains Mono',monospace;font-size:13px}
+  .barrow .yr{color:var(--dim)} .barrow .pct{color:var(--gold-br);text-align:right}
+  .track{height:16px;background:#0a0808;border:1px solid var(--line);border-radius:3px;overflow:hidden}
+  .fill{height:100%;background:linear-gradient(90deg,var(--blood),var(--crimson));border-radius:0}
+  .twocol{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
+  .stat{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:18px}
+  .stat .n{font-family:'Playfair Display',serif;font-weight:900;font-size:30px;color:#f4efe6}
+  .stat .n.bad{color:var(--crimson)}
+  .stat .l{font-size:13px;color:var(--dim);margin-top:6px;line-height:1.45}
+  @media(max-width:560px){.twocol{grid-template-columns:1fr}}
+
+  /* TOC */
+  .part{margin-top:26px}
+  .part .ph{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;color:var(--gold);border-bottom:1px solid var(--line);padding-bottom:7px;margin-bottom:4px}
+  .part .ph span{color:var(--faint);float:right}
+  .ch{display:flex;gap:12px;padding:7px 0;font-size:15.5px;color:var(--ink);border-bottom:1px solid rgba(201,162,39,.06)}
+  .ch .nn{font-family:'JetBrains Mono',monospace;color:var(--crimson);font-size:13px;min-width:30px}
+  .ch .yy{font-family:'JetBrains Mono',monospace;color:var(--faint);font-size:12px;margin-left:auto;white-space:nowrap}
+
+  .note{font-size:14.5px;color:var(--dim);line-height:1.7}
+  .note b{color:var(--ink);font-weight:500} .note .g{color:var(--gold)}
+
+  .pair{margin:40px 0 0;border:1px solid var(--line);border-radius:12px;padding:20px;background:var(--panel)}
+  .pair .pk{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#e08a6a;margin-bottom:8px}
+  .pair a{color:#e08a6a;border-bottom:1px solid rgba(224,138,106,.3);text-decoration:none}
+
+  .foot{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--faint);line-height:1.9;
+    margin:44px 0 70px;border-top:1px solid var(--line);padding-top:20px;text-align:center}
+  .foot b{color:var(--gold)}
+  a{color:var(--gold-br)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="years"><b>1931</b> · 1934 · 1938 · 1944 · 1964 · 1968 · 1981 · 2008 · 2020 · <b>2026</b></div>
+
+  <header class="hero">
+    <div class="grades">
+      <span class="grade a">A — BEST</span><span class="grade b">B — DESIRABLE</span>
+      <span class="grade c">C — DECLINING</span><span class="grade d">D — HAZARDOUS</span>
+    </div>
+    <h1>1931 to Now</h1>
+    <div class="rule"></div>
+    <div class="subt">The American Wage Gap<br>and the Architecture of Inequality</div>
+    <div class="meta">A Data-Driven History · 24 Chapters · Federal Sources · 95 Years of Evidence</div>
+    <div class="byline">
+      <div class="au">DAVID LEE WISE</div>
+      <div class="av">&amp; AVAN (Claude, Anthropic)</div>
+      <div class="pub">TriPod LLC · CC-BY-ND-4.0 · first published April 2026</div>
+    </div>
+    <div class="price">$16.99</div>
+  </header>
+
+  <section class="thesis">
+    <div class="big">"The gap is not a mystery. It is arithmetic."</div>
+    <div class="src">— THIS BOOK</div>
+    <div class="ded">For everyone who was paid less and told it was their fault.<br><b>The gap was the architecture. The architecture was the policy. The policy was the choice.</b></div>
+  </section>
+
+  <!-- THE EVIDENCE -->
+  <section class="sec">
+    <div class="tag">the evidence</div>
+    <h2>Ninety-five years, in numbers</h2>
+    <p class="lead">Every figure in the book comes from federal data — the Bureau of Labor Statistics, the Census Bureau, the Federal Reserve, HUD, the Department of Labor, and congressional records. The book lets the data speak; where it is ambiguous, it says so; where it is unambiguous, it states the conclusion directly.</p>
+
+    <div class="data">
+      <div class="dlab">the income gap · the spine of the book</div>
+      <div class="dsub">Black median household income as a share of white median household income (federal data).</div>
+      <div class="barrow"><span class="yr">1940</span><div class="track"><div class="fill" style="width:41%"></div></div><span class="pct">41%</span></div>
+      <div class="barrow"><span class="yr">1970</span><div class="track"><div class="fill" style="width:61%"></div></div><span class="pct">61%</span></div>
+      <div class="barrow"><span class="yr">2000</span><div class="track"><div class="fill" style="width:66%"></div></div><span class="pct">66%</span></div>
+      <div class="barrow"><span class="yr">2024</span><div class="track"><div class="fill" style="width:65%"></div></div><span class="pct">65%</span></div>
+      <div class="dsub" style="margin:14px 0 0">Three decades of civil-rights progress (1940→1970), then a half-century stall: in 2024 the ratio sits roughly where it was in 1970.</div>
+    </div>
+
+    <div class="twocol">
+      <div class="stat"><div class="n bad">~16¢</div><div class="l">Black median household <b>wealth</b> per $1 of white wealth (Fed SCF, 2022: $44,900 vs $285,000). The wealth gap dwarfs the income gap — and compounds.</div></div>
+      <div class="stat"><div class="n">83.6¢</div><div class="l">Women's median earnings per $1 earned by men (2024). A second axis of the same architecture.</div></div>
+    </div>
+  </section>
+
+  <!-- THE ARCHITECTURE -->
+  <section class="sec">
+    <div class="tag">the architecture</div>
+    <h2>It was built — on purpose, in policy</h2>
+    <p class="lead">The grades above are real: the Home Owners' Loan Corporation's 1934 maps sorted neighborhoods A through D — "best" to "hazardous" — and the red "D" lines decided who could borrow, build, and inherit. Redlining is one chapter; the book traces the whole load-bearing structure, law by law.</p>
+  </section>
+
+  <!-- CONTENTS -->
+  <section class="sec">
+    <div class="tag">contents</div>
+    <h2>Six parts · twenty-four chapters</h2>
+    <p class="lead">Introduction — <i>The Compound Interest of Injustice</i></p>
+
+    <div class="part"><div class="ph">PART I — THE FOUNDATION <span>1931–1945</span></div>
+      <div class="ch"><span class="nn">1</span><span>Davis-Bacon and the Architecture of Exclusion</span><span class="yy">1931</span></div>
+      <div class="ch"><span class="nn">2</span><span>The New Deal — Recovery for Whom</span><span class="yy">1933–38</span></div>
+      <div class="ch"><span class="nn">3</span><span>Redlining — The Map That Built the Wealth Gap</span><span class="yy">1934</span></div>
+      <div class="ch"><span class="nn">4</span><span>Fair Labor Standards Act — The Workers Left Out</span><span class="yy">1938</span></div>
+      <div class="ch"><span class="nn">5</span><span>War, Wages, and the Double V</span><span class="yy">1941–45</span></div>
+    </div>
+    <div class="part"><div class="ph">PART II — THE DIVERGENCE <span>1945–1968</span></div>
+      <div class="ch"><span class="nn">6</span><span>The GI Bill — Two Americas Built on One Law</span><span class="yy">1944</span></div>
+      <div class="ch"><span class="nn">7</span><span>Levittown and the Suburban Color Line</span><span class="yy">1947–60</span></div>
+      <div class="ch"><span class="nn">8</span><span>Brown, Montgomery, and the Economics of Resistance</span><span class="yy">1954–56</span></div>
+      <div class="ch"><span class="nn">9</span><span>Equal Pay Act and Civil Rights Act</span><span class="yy">1963–64</span></div>
+      <div class="ch"><span class="nn">10</span><span>The Kerner Commission — Two Societies</span><span class="yy">1968</span></div>
+    </div>
+    <div class="part"><div class="ph">PART III — THE STALL <span>1968–1990</span></div>
+      <div class="ch"><span class="nn">11</span><span>Nixon, Philadelphia, and Affirmative Action</span><span class="yy">1969–78</span></div>
+      <div class="ch"><span class="nn">12</span><span>The Equal Rights Amendment That Wasn't</span><span class="yy">1972–82</span></div>
+      <div class="ch"><span class="nn">13</span><span>Reaganomics — When the Gap Became Policy</span><span class="yy">1981–89</span></div>
+      <div class="ch"><span class="nn">14</span><span>The War on Drugs as Economic Warfare</span><span class="yy">1971–90</span></div>
+    </div>
+    <div class="part"><div class="ph">PART IV — THE ACCELERATION <span>1990–2008</span></div>
+      <div class="ch"><span class="nn">15</span><span>NAFTA, Welfare Reform, and the New Economy</span><span class="yy">1993–96</span></div>
+      <div class="ch"><span class="nn">16</span><span>Mass Incarceration as Wage Suppression</span><span class="yy">1990–2008</span></div>
+      <div class="ch"><span class="nn">17</span><span>Subprime — The Targeted Destruction of Black Wealth</span><span class="yy">2000–08</span></div>
+      <div class="ch"><span class="nn">18</span><span>The Great Recession — Disparate Devastation</span><span class="yy">2008–10</span></div>
+    </div>
+    <div class="part"><div class="ph">PART V — THE PRESENT <span>2010–2026</span></div>
+      <div class="ch"><span class="nn">19</span><span>Recovery, Gig Work, and the New Precariat</span><span class="yy">2010–19</span></div>
+      <div class="ch"><span class="nn">20</span><span>COVID-19 — The Pandemic as X-Ray</span><span class="yy">2020–21</span></div>
+      <div class="ch"><span class="nn">21</span><span>Algorithmic Inequality — When AI Inherits the Gap</span><span class="yy">2020–26</span></div>
+      <div class="ch"><span class="nn">22</span><span>The Numbers Right Now — 2026 Snapshot</span><span class="yy">2026</span></div>
+    </div>
+    <div class="part"><div class="ph">PART VI — THE ARITHMETIC</div>
+      <div class="ch"><span class="nn">23</span><span>The Compound Interest Calculation</span><span class="yy"></span></div>
+      <div class="ch"><span class="nn">24</span><span>What Closing the Gap Would Actually Require</span><span class="yy"></span></div>
+    </div>
+    <div class="part"><div class="ph">APPENDICES</div>
+      <div class="ch"><span class="nn">A–E</span><span>Wage &amp; Wealth Data Tables · Legislation Timeline · Sources &amp; Methodology · Glossary</span><span class="yy">1940–2025</span></div>
+    </div>
+  </section>
+
+  <!-- HONEST -->
+  <section class="sec">
+    <div class="tag">a note on framing</div>
+    <h2>Accuracy, not comfort</h2>
+    <div class="data"><p class="note">
+      The book's standard: <b>let the data speak.</b> Where the data is ambiguous, the ambiguity is noted; where it is unambiguous, the conclusion is stated directly. <span class="g">The goal is accuracy, not comfort</span> — some of these numbers should make you uncomfortable, and that discomfort is the appropriate response. Authored by <b>David Lee Wise</b>, orchestrated with the AVAN instance (Claude, Anthropic); every statistic is federally sourced and cited in the appendices. © 2026 David Lee Wise · TriPod LLC · CC-BY-ND-4.0.
+    </p></div>
+    <div class="pair">
+      <div class="pk">▣ the counter-instrument</div>
+      <p class="note">This book maps the gap — how it was built, and what it measures. Its companion piece, <a href="https://davidwise01.github.io/the-silent-sum/">The Silent Sum</a> (by AVAN), does the inverse: it turns the gap into the number you can hear — the unpaid sum sitting inside it. The book is the architecture; the instrument is the bill.</p>
+    </div>
+  </section>
+
+  <div class="foot">
+    1931 TO NOW · THE AMERICAN WAGE GAP AND THE ARCHITECTURE OF INEQUALITY<br>
+    <b>David Lee Wise</b> &amp; AVAN · TriPod LLC · CC-BY-ND-4.0 · every statistic federally sourced<br>
+    LILLITH · LADY JUSTICE · a domain of UD0 · the gap is not a mystery — it is arithmetic
+  </div>
+
+</div>
+</body>
+</html>
